@@ -1,6 +1,8 @@
 package ru.tsystems.javaschool.entity;
 
 import javax.persistence.*;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -13,6 +15,8 @@ public class Order {
     private int number;
     private Done done = Done.NO;
     private Vehicle vehicle;
+
+    private List<Checkpoint> checkpoints;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -54,6 +58,22 @@ public class Order {
 
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
+    }
+
+    @OneToMany(mappedBy = "order", cascade = {CascadeType.PERSIST})
+    public List<Checkpoint> getCheckpoints() {
+        return checkpoints;
+    }
+
+    public void setCheckpoints(List<Checkpoint> checkpoints) {
+        this.checkpoints = checkpoints;
+    }
+
+    public void putCheckpoint(Checkpoint checkpoint) {
+        if (checkpoints == null) {
+            checkpoints = new LinkedList<>();
+        }
+        checkpoints.add(checkpoint);
     }
 
     @Override

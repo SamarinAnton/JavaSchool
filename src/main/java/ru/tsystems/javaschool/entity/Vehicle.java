@@ -1,6 +1,8 @@
 package ru.tsystems.javaschool.entity;
 
 import javax.persistence.*;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -15,6 +17,9 @@ public class Vehicle {
     private int count;
     private City city;
     private Status status = Status.OK;
+
+    private List<Driver> drivers;
+    private List<Cargo> cargoes;
 
     public Vehicle() {
     }
@@ -88,6 +93,48 @@ public class Vehicle {
 
     public void setCity(City citiesByCityId) {
         this.city = citiesByCityId;
+    }
+
+    @OneToMany(mappedBy = "vehicle")
+    public List<Driver> getDrivers() {
+        return drivers;
+    }
+
+    public void setDrivers(List<Driver> drivers) {
+        this.drivers = drivers;
+    }
+
+    public void putDriver(Driver driver) {
+        if (drivers == null) {
+            drivers = new LinkedList<>();
+        }
+        drivers.add(driver);
+    }
+
+    @SuppressWarnings("UnusedReturnValue")
+    public boolean removeDriver(Driver driver) {
+        return drivers.remove(driver);
+    }
+
+    @OneToMany(mappedBy = "vehicle")
+    public List<Cargo> getCargoes() {
+        return cargoes;
+    }
+
+    public void setCargoes(List<Cargo> cargoes) {
+        this.cargoes = cargoes;
+    }
+
+    public void putCargo(Cargo cargo) {
+        if (cargoes == null) {
+            cargoes = new LinkedList<>();
+        }
+        cargoes.add(cargo);
+    }
+
+    @SuppressWarnings("UnusedReturnValue")
+    public boolean removeCargo(Cargo cargo) {
+        return cargoes.remove(cargo);
     }
 
     @Override

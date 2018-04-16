@@ -1,9 +1,9 @@
 package ru.tsystems.javaschool.entity;
 
 import javax.persistence.*;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
-
-import static javax.persistence.FetchType.LAZY;
 
 @Entity
 @Table(name = "cities", schema = "trucking")
@@ -13,6 +13,9 @@ public class City {
     private String name;
     private double latitude;
     private double longitude;
+
+    private List<Driver> drivers;
+    private List<Vehicle> vehicles;
 
     public City() {
     }
@@ -35,7 +38,6 @@ public class City {
         this.id = id;
     }
 
-    //@Basic(fetch = LAZY, optional = false)
     @Basic
     @Column(name = "name", nullable = false, length = 45, unique = true)
     public String getName() {
@@ -64,6 +66,46 @@ public class City {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    @OneToMany(mappedBy = "city")
+    public List<Driver> getDrivers() {
+        return drivers;
+    }
+
+    public void setDrivers(List<Driver> drivers) {
+        this.drivers = drivers;
+    }
+
+    public void putDriver(Driver driver) {
+        if (drivers == null) {
+            drivers = new LinkedList<>();
+        }
+        drivers.add(driver);
+    }
+
+    public boolean removeDriver(Driver driver) {
+        return drivers.remove(driver);
+    }
+
+    @OneToMany(mappedBy = "city")
+    public List<Vehicle> getVehicles() {
+        return vehicles;
+    }
+
+    public void setVehicles(List<Vehicle> vehicles) {
+        this.vehicles = vehicles;
+    }
+
+    public void putVehicle(Vehicle vehicle) {
+        if (vehicles == null) {
+            vehicles = new LinkedList<>();
+        }
+        vehicles.add(vehicle);
+    }
+
+    public boolean removeVehicle(Vehicle vehicle) {
+        return vehicles.remove(vehicle);
     }
 
     @Override

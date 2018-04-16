@@ -2,6 +2,7 @@ package ru.tsystems.javaschool.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
@@ -14,7 +15,7 @@ public class Driver {
     private String firstName;
     private String lastName;
     private String number;
-    private Timestamp update;
+    private Timestamp update = Timestamp.valueOf(LocalDateTime.now());
     private int worked;
     private Status status = Status.REST;
     private City city;
