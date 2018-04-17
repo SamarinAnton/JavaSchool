@@ -16,6 +16,7 @@ public class Vehicle {
     private int capacity;
     private int count;
     private City city;
+    private Order order;
     private Status status = Status.OK;
 
     private List<Driver> drivers;
@@ -135,6 +136,15 @@ public class Vehicle {
     @SuppressWarnings("UnusedReturnValue")
     public boolean removeCargo(Cargo cargo) {
         return cargoes.remove(cargo);
+    }
+
+    @OneToOne(mappedBy = "vehicle")
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     @Override
