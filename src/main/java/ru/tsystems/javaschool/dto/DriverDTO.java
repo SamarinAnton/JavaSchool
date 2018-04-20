@@ -24,6 +24,10 @@ public class DriverDTO extends AbstractDTO<Driver> {
     public DriverDTO() {
     }
 
+    public DriverDTO(String number) {
+        this.number = number;
+    }
+
     public DriverDTO(Driver entity) {
         this.id = entity.getId();
         this.number = entity.getNumber();

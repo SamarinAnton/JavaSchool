@@ -13,6 +13,10 @@ public class UserDTO extends AbstractDTO<User> {
     public UserDTO() {
     }
 
+    public UserDTO(String login) {
+        this.login = login;
+    }
+
     public UserDTO(int id, String login, String password, User.Status status) {
         this.id = id;
         this.login = login;

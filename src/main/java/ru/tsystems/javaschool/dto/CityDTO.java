@@ -18,6 +18,13 @@ public class CityDTO extends AbstractDTO<City> {
     private List<DriverDTO> drivers;
     private List<VehicleDTO> vehicles;
 
+    public CityDTO() {
+    }
+
+    public CityDTO(String name) {
+        this.name = name;
+    }
+
     public CityDTO(String name, double latitude, double longitude) {
         this.name = name;
         this.latitude = latitude;
