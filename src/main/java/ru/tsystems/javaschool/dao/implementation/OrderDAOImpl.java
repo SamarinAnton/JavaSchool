@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ru.tsystems.javaschool.dao.OrderDAO;
 import ru.tsystems.javaschool.entity.Order;
+import ru.tsystems.javaschool.entity.Vehicle;
 
 @Repository
 public class OrderDAOImpl extends AbstractDAOImpl<Order> implements OrderDAO {
@@ -32,5 +33,12 @@ public class OrderDAOImpl extends AbstractDAOImpl<Order> implements OrderDAO {
                 .createQuery("delete from Order x where x.number = :val")
                 .setParameter("val", number)
                 .executeUpdate();
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.MANDATORY)
+    public void setVehicle(Order order, Vehicle vehicle) {
+        order.setVehicle(vehicle);
+        vehicle.setOrder(order);
     }
 }

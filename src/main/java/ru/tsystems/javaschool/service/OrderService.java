@@ -7,9 +7,8 @@ import java.util.List;
 public interface OrderService {
     List<OrderDTO> getAll();
     OrderDTO getById(int id);
-    void add(OrderDTO order);
-    void update(OrderDTO order);
-    int needCapacity(int id);
-    double spendTime(int id);
+    int add(OrderDTO order);
+    int needCapacity(int number);
+    int spendTime(int number);
     OrderDTO getByNumber(int number);
 }

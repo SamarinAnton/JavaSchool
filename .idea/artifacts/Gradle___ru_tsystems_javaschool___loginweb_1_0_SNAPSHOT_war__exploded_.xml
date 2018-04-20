@@ -23,6 +23,8 @@
           <element id="library" level="project" name="Gradle: mysql:mysql-connector-java:5.1.46" />
           <element id="library" level="project" name="Gradle: org.apache.commons:commons-dbcp2:2.2.0" />
           <element id="library" level="project" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.9.5" />
+          <element id="library" level="project" name="Gradle: org.aspectj:aspectjweaver:1.9.0" />
+          <element id="library" level="project" name="Gradle: javax.servlet:jstl:1.2" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-web:4.3.14.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-context:4.3.14.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-aop:4.3.14.RELEASE" />

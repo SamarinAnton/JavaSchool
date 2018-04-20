@@ -95,7 +95,6 @@ public class DriverServiceImpl implements DriverService {
 
         String nameCity = driverDTO.getCity().getName();
         City city = cityDAO.getByName(nameCity);
-
         driverDAO.move(driver, city);
 
         driver.setStatus(driverDTO.getStatus()); //necessary to recount worked
@@ -105,8 +104,11 @@ public class DriverServiceImpl implements DriverService {
         driverDAO.setVehicle(driver, vehicle);
 
         int numberOrder = driverDTO.getOrder().getNumber();
-        Order order = orderDAO.getByNumber(numberOrder);
+        Order order = orderDAO.getByNumber(numberOrder); //What is if order isn't?
         driver.setOrder(order);
+
+        driverDAO.update(driver);
+
     }
 
     @Override
@@ -115,7 +117,7 @@ public class DriverServiceImpl implements DriverService {
         Driver removeDriver = driverDAO.getByNumber(number);
         String removeUserByLogin = removeDriver.getUser().getLogin();
 
-        removeDriver.getCity().removeDriver(removeDriver);
+        removeDriver.getCity().removeDriver(removeDriver);  //delete also from city's list
         removeDriver.getVehicle().removeDriver(removeDriver);
 
         int answer = removeDriver.getId();

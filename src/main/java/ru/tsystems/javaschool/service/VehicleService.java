@@ -9,6 +9,7 @@ public interface VehicleService {
     VehicleDTO getById(int id);
     VehicleDTO getByNumber(String number);
     void update(VehicleDTO vehicle);
-    void add(VehicleDTO vehicle);
+    int add(VehicleDTO vehicle);
+    int removeByNumber(String number);
     double speed();
 }

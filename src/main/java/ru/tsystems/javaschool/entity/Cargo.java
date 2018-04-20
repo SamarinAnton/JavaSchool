@@ -20,7 +20,7 @@ public class Cargo {
     public Cargo() {
     }
 
-    public Cargo(int id, String name, double weight, Status status, int number) {
+    public Cargo(int id, String name, double weight, Status status, int  number) {
         this.id = id;
         this.name = name;
         this.weight = weight;

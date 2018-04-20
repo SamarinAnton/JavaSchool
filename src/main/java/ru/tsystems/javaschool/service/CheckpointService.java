@@ -7,5 +7,4 @@ import java.util.List;
 public interface CheckpointService {
     List<CheckpointDTO> getAll();
     CheckpointDTO getById(int id);
-    void update(CheckpointDTO checkpoint);
 }

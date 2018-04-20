@@ -52,5 +52,6 @@ public class UserServiceImpl implements UserService {
         User user = userDAO.getByLogin(userDTO.getLogin());
         user.setPassword(userDTO.getPassword());
 
+        userDAO.update(user);
     }
 }
