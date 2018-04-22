@@ -15,7 +15,7 @@ public class Driver {
     private String firstName;
     private String lastName;
     private String number;
-    private Timestamp update = Timestamp.valueOf(LocalDateTime.now());
+    private Timestamp lastUpdate = Timestamp.valueOf(LocalDateTime.now());
     private int worked;
     private Status status = Status.REST;
     private City city;
@@ -34,7 +34,7 @@ public class Driver {
         this.firstName = firstName;
         this.lastName = lastName;
         this.status = status;
-        this.update = update;
+        this.lastUpdate = update;
         this.worked = worked;
         this.city = city;
         this.vehicle = vehicle;
@@ -94,13 +94,13 @@ public class Driver {
     }
 
     @Basic
-    @Column(name = "update", nullable = false)
+    @Column(name = "last_update", nullable = false)
     public Timestamp getUpdate() {
-        return update;
+        return lastUpdate;
     }
 
     public void setUpdate(Timestamp update) {
-        this.update = update;
+        this.lastUpdate = update;
     }
 
     @Basic
@@ -163,14 +163,14 @@ public class Driver {
                 Objects.equals(firstName, driver.firstName) &&
                 Objects.equals(lastName, driver.lastName) &&
                 Objects.equals(number, driver.number) &&
-                Objects.equals(update, driver.update) &&
+                Objects.equals(lastUpdate, driver.lastUpdate) &&
                 status.equals(driver.status);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, firstName, lastName, number, update, worked, status);
+        return Objects.hash(id, firstName, lastName, number, lastUpdate, worked, status);
     }
 
     @Override
@@ -181,7 +181,7 @@ public class Driver {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", status=" + status +
-                ", lastStatusUpdate=" + update +
+                ", lastStatusUpdate=" + lastUpdate +
                 ", workedThisMonthMs=" + worked +
                 '}';
     }

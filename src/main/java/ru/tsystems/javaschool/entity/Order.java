@@ -40,7 +40,7 @@ public class Order {
     }
 
     @Basic
-    @Column(name = "done", nullable = false)
+    @Column(name = "done_order", nullable = false)
     @Enumerated(EnumType.STRING)
     public Done getStatus() {
         return done;

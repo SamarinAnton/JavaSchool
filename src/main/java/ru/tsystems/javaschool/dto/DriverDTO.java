@@ -13,7 +13,7 @@ public class DriverDTO extends AbstractDTO<Driver> {
     private String firstName;
     private String lastName;
     private Driver.Status status;
-    private Timestamp update;
+    private Timestamp lastUpdate;
     private int worked;
 
     private CityDTO city;
@@ -35,7 +35,7 @@ public class DriverDTO extends AbstractDTO<Driver> {
         this.lastName = entity.getLastName();
         this.status = entity.getStatus();
         this.worked = entity.getWorked();
-        this.update = entity.getUpdate();
+        this.lastUpdate = entity.getUpdate();
         this.city = null;
         this.vehicle = null;
         this.user = null;
@@ -62,7 +62,7 @@ public class DriverDTO extends AbstractDTO<Driver> {
         this.city = city;
         this.vehicle = vehicle;
         this.status = status;
-        this.update = update;
+        this.lastUpdate = update;
         this.worked = worked;
     }
 
@@ -107,11 +107,11 @@ public class DriverDTO extends AbstractDTO<Driver> {
     }
 
     public Timestamp getUpdate() {
-        return update;
+        return lastUpdate;
     }
 
     public void setUpdate(Timestamp update) {
-        this.update = update;
+        this.lastUpdate = update;
     }
 
     public long getWorked() {
@@ -163,7 +163,7 @@ public class DriverDTO extends AbstractDTO<Driver> {
                 Objects.equals(number, driver.number) &&
                 Objects.equals(firstName, driver.firstName) &&
                 Objects.equals(lastName, driver.lastName) &&
-                Objects.equals(update, driver.update) &&
+                Objects.equals(lastUpdate, driver.lastUpdate) &&
                 worked == driver.worked &&
                 status.equals(driver.status) &&
                 (city.equals(driver.city) ||
@@ -180,7 +180,7 @@ public class DriverDTO extends AbstractDTO<Driver> {
     public int hashCode() {
 
         return Objects.hash(id, number, firstName, lastName, status,
-                update, worked, city, vehicle, order, user);
+                lastUpdate, worked, city, vehicle, order, user);
     }
 
     @Override
@@ -191,7 +191,7 @@ public class DriverDTO extends AbstractDTO<Driver> {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", status=" + status +
-                ", update=" + update +
+                ", last update=" + lastUpdate +
                 ", worked=" + worked +
                 ", city=" + city +
                 ", vehicle=" + vehicle +

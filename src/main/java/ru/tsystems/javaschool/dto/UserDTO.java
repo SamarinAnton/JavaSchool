@@ -17,11 +17,8 @@ public class UserDTO extends AbstractDTO<User> {
         this.login = login;
     }
 
-    public UserDTO(int id, String login, String password, User.Status status) {
+    public UserDTO(int id) {
         this.id = id;
-        this.login = login;
-        this.password = password;
-        this.status = status;
     }
 
     public UserDTO(User entity) {

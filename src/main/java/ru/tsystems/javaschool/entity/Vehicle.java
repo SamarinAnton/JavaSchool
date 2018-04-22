@@ -66,7 +66,7 @@ public class Vehicle {
     }
 
     @Basic
-    @Column(name = "count", nullable = false)
+    @Column(name = "count_drivers", nullable = false)
     public int getCount() {
         return count;
     }

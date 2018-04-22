@@ -9,6 +9,9 @@ import ru.tsystems.javaschool.dto.UserDTO;
 import ru.tsystems.javaschool.entity.User;
 import ru.tsystems.javaschool.service.UserService;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class UserServiceImpl implements UserService {
     private UserDAO userDAO;
@@ -53,5 +56,16 @@ public class UserServiceImpl implements UserService {
         user.setPassword(userDTO.getPassword());
 
         userDAO.update(user);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS, readOnly = true)
+    public List<UserDTO> getAll() {
+        return userDAO.getAll().stream()
+                .map(x -> {
+                    UserDTO userDTO = new UserDTO(x);
+                    userDTO.apply(x);
+                    return userDTO;
+                }).collect(Collectors.toList());
     }
 }

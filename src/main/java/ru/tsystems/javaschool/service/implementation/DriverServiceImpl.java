@@ -76,7 +76,7 @@ public class DriverServiceImpl implements DriverService {
         city.putDriver(driver);
 
         String loginUser = driverDTO.getUser().getLogin();
-        User user = userDAO.getByLogin(loginUser);
+        User user = userDAO.getByLogin(loginUser);  //check that user is driver ststus
 
         driver.setUser(user);
 
